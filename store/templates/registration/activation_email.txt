@@ -1,0 +1,7 @@
+Greetings,
+
+you've just singed up at {{ site.name }}.
+
+https://{{ site.domain }}{% url 'registration_activate' activation_key %}
+
+This link is valid for {{ expiration_days }}.
