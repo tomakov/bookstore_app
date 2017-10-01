@@ -5,6 +5,19 @@
     <title>Django store</title>
 </head>
 <body>
-This is a Django store! There are {{ count }} books in stock
+{% if request.user.is_authenticated %}
+<h1>
+    Welcome, {%if request.user.first_name%}
+    {{request.user.first_name}}
+    {% else %}
+    {{request.user.username}}{%endif%}!
+    <a href="{% url 'auth_logout' %}">Logout</a>
+</h1>
+{% else %}
+<h1>
+    Welcome, would you like to <a href="{% url 'auth_login' %}">log in</a>?
+</h1>
+{% endif %}
+This is a Django store! There are {{ count }} books in stock. User location: {{ request.session.location }}.
 </body>
 </html>
